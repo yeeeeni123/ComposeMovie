@@ -1,38 +1,23 @@
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    id("jun.android.feature")
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "com.example.ticketlist"
-    compileSdk = 34
-
-    defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+    namespace = "com.yeen.ticketlist"
 }
 
 dependencies {
-
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.lifecycle.runtimeCompose)
+    implementation(libs.androidx.lifecycle.viewModelCompose)
+    implementation(libs.kotlinx.immutable)
+    implementation(project(":core:data"))
+    implementation(project(":core:designsystem"))
+    implementation ("com.github.bumptech.glide:glide:4.11.0")
+    implementation(libs.androidx.constraintlayout.compose)
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
+    implementation ("androidx.navigation:navigation-compose:2.5.2")
 }

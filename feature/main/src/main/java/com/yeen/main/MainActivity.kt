@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 NavHost(
                     navController = navController,
-                    startDestination = LoginRoute.route
+                    startDestination = MainRoute.route
                 ) {
                     loginNavGraph(
                         onSignInClick = { navController.navigateSignIn() },

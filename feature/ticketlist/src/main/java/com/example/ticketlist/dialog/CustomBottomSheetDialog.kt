@@ -1,4 +1,4 @@
-package com.yeen.main.dialog
+package com.example.ticketlist.dialog
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -42,18 +42,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.ticketlist.TicketViewModel
 import com.yeen.data.response.MovieAreaModel
 import com.yeen.data.response.MovieAreaSubModel
-import com.yeen.login.LoginEvent
-import com.yeen.login.R
-import com.yeen.main.MainViewModel
+import com.yeen.designsystem.theme.BrightRed
 import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomBottomSheetDialog(
-    viewModel: MainViewModel,
+    viewModel: TicketViewModel,
     onClickCancel: () -> Unit,
     onClickConfirm: () -> Unit
 ) {
@@ -152,7 +151,7 @@ fun CustomBottomSheetDialog(
                     .padding(10.dp, 0.dp, 10.dp, 0.dp)
                     .height(50.dp)
                     .background(
-                        color = colorResource(id = R.color.brightRed),
+                        color = BrightRed,
                         shape = RoundedCornerShape(20.dp)
                     )
                     .clickable {
@@ -216,9 +215,9 @@ fun AreaItem(area: MovieAreaModel.MovieArea, onItemClick: (MovieAreaModel.MovieA
     ) {
         Text(text = area.name,
             color = if (area.clickable) {
-                colorResource(id = R.color.brightRed)
+                BrightRed
             } else {
-                colorResource(id = R.color.black)
+                Color.Black
             },
             fontSize = 16.sp, fontWeight = FontWeight.Bold)
     }
@@ -235,7 +234,7 @@ fun AreaSubItem(item: MovieAreaSubModel.MovieAreaSub, onItemClick: (MovieAreaSub
             .height(50.dp)
             .background(
                 color = if (item.isSelected) {
-                    colorResource(id = R.color.brightRed)
+                    BrightRed
                 } else {
                     Color.Transparent
                 },
@@ -253,9 +252,9 @@ fun AreaSubItem(item: MovieAreaSubModel.MovieAreaSub, onItemClick: (MovieAreaSub
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(item.area, color = if (item.isSelected) {
-            colorResource(id = R.color.white)
+            Color.White
         } else {
-            colorResource(id = R.color.black)
+            Color.Black
         }, fontSize = 16.sp)
     }
 

@@ -32,9 +32,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.ticketlist.TicketListScreen
 import com.yeen.main.bottomnav.BottomNavItem
 import com.yeen.main.bottomnav.MyPage
-import com.yeen.main.bottomnav.TicketList
 import com.yeen.main.bottomnav.Ticketing
 import com.yeen.main.drawer.MenuItem
 import com.yeen.main.drawer.ScaffoldState
@@ -141,7 +141,7 @@ fun NavigationGraph(navController: NavHostController) {
             Ticketing()
         }
         composable(BottomNavItem.TicketList.screen_route) {
-            TicketList()
+            TicketListScreen()
         }
         composable(BottomNavItem.MyPage.screen_route) {
             MyPage()

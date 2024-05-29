@@ -26,6 +26,7 @@ android {
 
 dependencies {
     implementation(projects.feature.main)
+    implementation(projects.feature.ticketlist)
     implementation(projects.core.designsystem)
     implementation(libs.firebase.perf.ktx)
 }

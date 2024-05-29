@@ -10,6 +10,9 @@ android {
 dependencies {
     implementation(projects.feature.signin)
     implementation(projects.feature.login)
+    implementation(projects.feature.ticketlist)
+    implementation(projects.feature.ticketing)
+    implementation(projects.feature.mypage)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity.compose)
