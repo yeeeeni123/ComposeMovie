@@ -1,10 +1,9 @@
-@file:Suppress("DSL_SCOPE_VIOLATION")
+
 
 buildscript {
     repositories {
         google()
         mavenCentral()
-        maven("https://oss.sonatype.org/content/repositories/snapshots")
     }
     dependencies {
         // gradlew generateProjectDependencyGraph
@@ -20,5 +19,3 @@ plugins {
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.android.library) apply false
 }
-
-apply(plugin="com.vanniktech.dependency.graph.generator")

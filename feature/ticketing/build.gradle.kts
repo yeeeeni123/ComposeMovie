@@ -1,6 +1,8 @@
 plugins {
     id("jun.android.feature")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -23,4 +25,8 @@ dependencies {
 
     //Coil
     implementation ("io.coil-kt:coil-compose:2.2.0")
+
+    implementation("com.google.dagger:hilt-android:2.44")
+    implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
 }
