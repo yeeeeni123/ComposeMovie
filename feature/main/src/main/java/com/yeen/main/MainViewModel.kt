@@ -1,13 +1,11 @@
 package com.yeen.main
 
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yeen.domain.usecase.SignInUsecase
-import com.yeen.main.dialog.CustomBottomSheetDialogState
 import com.yeen.model.InvalidUserException
 import com.yeen.model.User
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -77,27 +75,6 @@ class MainViewModel @Inject constructor(
     }
 
 
-    val customBottomSheetDialogState: MutableState<CustomBottomSheetDialogState> = mutableStateOf(
-        CustomBottomSheetDialogState()
-    )
-
-    fun showBottomSheetDialog() {
-        customBottomSheetDialogState.value = CustomBottomSheetDialogState(
-            is_click = true,
-            onClickConfirm = {
-                resetBottomSheetDialogState()
-            },
-            onClickCancel = {
-                resetBottomSheetDialogState()
-            }
-        )
-    }
-
-
-
-    fun resetBottomSheetDialogState() {
-        customBottomSheetDialogState.value = CustomBottomSheetDialogState()
-    }
 
     sealed class UiEvent {
         data class ShowSnackBar(val message: String) : UiEvent()

@@ -10,4 +10,5 @@ android {
 
 dependencies {
     implementation(libs.androidx.appcompat)
+    implementation("androidx.compose.material:material:1.0.1")
 }

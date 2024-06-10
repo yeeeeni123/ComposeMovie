@@ -1,9 +1,11 @@
 package com.yeen.designsystem.theme
 
 import androidx.compose.material3.Typography
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.sp
 
 
@@ -33,3 +35,24 @@ val Typography = Typography(
     )
     */
 )
+
+val androidx.compose.material.Typography.underlinedDialogButton: TextStyle
+    @Composable get() = button.copy(
+        textDecoration = TextDecoration.Underline
+    )
+
+
+val androidx.compose.material.Typography.h5Title: TextStyle
+    @Composable get() = h5.copy(
+        fontSize = 24.sp
+    )
+
+val androidx.compose.material.Typography.dialogButton: TextStyle
+    @Composable get() = button.copy(
+        fontSize = 18.sp
+    )
+
+val androidx.compose.material.Typography.underlinedButton: TextStyle
+    @Composable get() = button.copy(
+        textDecoration = TextDecoration.Underline
+    )

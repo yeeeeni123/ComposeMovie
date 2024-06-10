@@ -55,7 +55,6 @@ class ComposeUI {
             R.drawable.ic_invisible
         }
 
-
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = text,
@@ -74,6 +73,7 @@ class ComposeUI {
             label = { Text(label) },
             placeholder = { Text(hint) }
         )
+
         return text
     }
 
@@ -108,5 +108,4 @@ class ComposeUI {
             )
         }
     }
-
 }

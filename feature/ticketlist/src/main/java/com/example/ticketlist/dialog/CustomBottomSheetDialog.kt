@@ -17,13 +17,17 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
@@ -43,9 +47,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ticketlist.TicketViewModel
+import com.yeen.data.calendar.CalendarUiModel
 import com.yeen.data.response.MovieAreaModel
 import com.yeen.data.response.MovieAreaSubModel
 import com.yeen.designsystem.theme.BrightRed
+import com.yeen.designsystem.theme.BrightRed2
 import kotlinx.coroutines.launch
 
 
@@ -259,6 +265,8 @@ fun AreaSubItem(item: MovieAreaSubModel.MovieAreaSub, onItemClick: (MovieAreaSub
     }
 
 }
+
+
 
 
 

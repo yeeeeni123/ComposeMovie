@@ -1,6 +1,7 @@
 package com.yeen.main
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.MaterialTheme
@@ -22,7 +23,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
             Surface(
                 color = MaterialTheme.colorScheme.background
             ) {
@@ -39,11 +39,15 @@ class MainActivity : ComponentActivity() {
                         onLoginClick = { navController.navigateLogin() }
                     )
                     mainNavGraph(
+                        this@MainActivity,
                         onMainClick = { navController.navigateMain() }
                     )
-
                 }
             }
         }
+    }
+
+    fun showToast(msg: String) {
+        Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
     }
 }

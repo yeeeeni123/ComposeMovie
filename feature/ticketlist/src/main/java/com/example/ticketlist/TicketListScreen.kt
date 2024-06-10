@@ -1,5 +1,8 @@
 package com.example.ticketlist
 
+import android.app.Activity
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -31,12 +34,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.ticketlist.dialog.CustomBottomSheetDialog
+import com.example.ticketlist.dialog.MovieSeatDialog
 import com.yeen.data.calendar.CalendarDataSource
 import com.yeen.data.calendar.CalendarUiModel
 import com.yeen.designsystem.theme.BrightRed
@@ -48,7 +53,7 @@ import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 @Composable
-fun TicketListScreen() {
+fun TicketingScreen() {
     val dataSource = CalendarDataSource()
     val viewModel: TicketViewModel = hiltViewModel()
     var calendarUiModel by remember { mutableStateOf(dataSource.getData(lastSelectedDate = dataSource.today)) }
@@ -192,6 +197,8 @@ fun SelectTheater(
     viewModel: TicketViewModel
 ) {
     val customBottomSheetDialogState = viewModel.customBottomSheetDialogState.value
+    val movieSeatDialogState = viewModel.movieSeatDialogState.value
+
     Column(
         modifier = Modifier.padding(5.dp),
         verticalArrangement = Arrangement.Center
@@ -253,7 +260,7 @@ fun SelectTheater(
                     shape = RoundedCornerShape(20.dp)
                 )
                 .clickable {
-                    viewModel.showBottomSheetDialog()
+                    viewModel.showMovieSeatDialog()
                 },
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -274,14 +281,23 @@ fun SelectTheater(
         )
     }
 
+    if (movieSeatDialogState.title.isNotBlank()) {
+        MovieSeatDialog(
+            title = movieSeatDialogState.title,
+            description = movieSeatDialogState.description,
+            onClickCancel = { movieSeatDialogState.onClickCancel() },
+            onClickConfirm = { movieSeatDialogState.onClickConfirm() }
+        )
+    }
+
 }
 
 @Composable
 fun personCounter() {
-
+    val context = LocalContext.current
     var count by remember { mutableStateOf(0) }
 
-    Row() {
+    Row {
         Column(
             Modifier
                 .padding(0.dp, 5.dp, 0.dp, 0.dp)
@@ -330,10 +346,12 @@ fun personCounter() {
                     color = BrightRed,
                     shape = RoundedCornerShape(20.dp)
                 )
-                .clickable(
-                    enabled = count < 8
-                ) {
-                    count++
+                .clickable {
+                    if (count < 8) {
+                        count++
+                    } else {
+                        Toast.makeText(context, "최대 인원은 $count 명입니다.", Toast.LENGTH_SHORT).show()
+                    }
                 },
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally

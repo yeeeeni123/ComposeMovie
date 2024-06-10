@@ -32,10 +32,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.ticketlist.TicketListScreen
+import com.example.mypage.MyPageScreen
+import com.example.ticketing.TicketListScreen
+import com.example.ticketlist.TicketingScreen
 import com.yeen.main.bottomnav.BottomNavItem
-import com.yeen.main.bottomnav.MyPage
-import com.yeen.main.bottomnav.Ticketing
 import com.yeen.main.drawer.MenuItem
 import com.yeen.main.drawer.ScaffoldState
 import com.yeen.main.home.HomeScreen
@@ -66,8 +66,8 @@ fun MainScreen(
 fun BottomNavigation(navController: NavHostController) {
     val items = listOf(
         BottomNavItem.Home,
-        BottomNavItem.Ticketing,
         BottomNavItem.TicketList,
+        BottomNavItem.Ticketing,
         BottomNavItem.MyPage
     )
 
@@ -85,7 +85,6 @@ fun RowScope.AddItem(
     screen: BottomNavItem,
     navController: NavHostController
 ) {
-
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
@@ -138,13 +137,13 @@ fun NavigationGraph(navController: NavHostController) {
             HomeScreen()
         }
         composable(BottomNavItem.Ticketing.screen_route) {
-            Ticketing()
+            TicketingScreen()
         }
         composable(BottomNavItem.TicketList.screen_route) {
             TicketListScreen()
         }
         composable(BottomNavItem.MyPage.screen_route) {
-            MyPage()
+            MyPageScreen()
         }
     }
 }
