@@ -18,6 +18,7 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,6 +35,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.mypage.MyPageScreen
 import com.example.ticketing.TicketListScreen
+import com.example.ticketing.TicketingViewModel
 import com.example.ticketlist.TicketingScreen
 import com.yeen.main.bottomnav.BottomNavItem
 import com.yeen.main.drawer.MenuItem
@@ -140,7 +142,10 @@ fun NavigationGraph(navController: NavHostController) {
             TicketingScreen()
         }
         composable(BottomNavItem.TicketList.screen_route) {
-            TicketListScreen()
+            val viewModel: TicketingViewModel = hiltViewModel()
+            TicketListScreen(stateHolder = viewModel.output.ticketingState.collectAsState(),
+                input = viewModel.input
+            )
         }
         composable(BottomNavItem.MyPage.screen_route) {
             MyPageScreen()
